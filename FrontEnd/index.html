@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Ajax Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js" integrity="sha512-7oYXeK0OxTFxndh0erL8FsjGvrl2VMDor6fVqzlLGfwOQQqTbYsGPv4ZZ15QHfSk80doyaM0ZJdvkyDcVO7KFA==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="server/customers"></script>
+</head>
+<body ng-app='myModule' ng-controller='myController'>
+    <button ng-click="doClick()">Load data</button>
+    <input type="text" placeholder="Search" ng-model="searchString">
+    Sort by:
+    <label for="sortName">
+        <input type="radio" ng-model="sortBy" value="ContactName"> 
+        Name
+    </label>
+    <label for="sortCity">
+        <input type="radio" ng-model="sortBy" value="City">
+        City
+    </label>
+    <table>
+        <tr ng-repeat="c in customers | filter:searchString | orderBy:sortBy" ng-show="customers !== null">
+            <td>Name: {{c.ContactName}}</td>
+            <td>City: {{c.City}}</td>
+        </tr>
+    </table>
+    <div ng-show="loading">Loading...</div>
+    <div class="white-space-pre-line" ng-hide="error==null">Error: {{error}}</div>
+    <script src="scripts.js"></script>
+</body>
+</html>

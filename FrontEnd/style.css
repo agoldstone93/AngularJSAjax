@@ -1,0 +1,11 @@
+div.white-space-preline {
+    white-space: pre-line;
+}
+
+body {
+    font-family: Helvetica, sans-serif;
+}
+
+td {
+    width: 300px;
+}
